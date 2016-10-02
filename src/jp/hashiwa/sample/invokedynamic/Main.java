@@ -17,25 +17,29 @@ public class Main {
       Method method;
       Object ret;
 
+      System.out.println("<<run: #01>>");
       clazz = loader.loadClass("TestInvokeDynamic");
       method = clazz.getMethod("callInvokeDynamic", new Class[]{Object.class, Object.class});
       ret = method.invoke(null, new Object[]{1, 2});
-      System.out.println(ret);
+      System.out.println("<<result: " + ret + ">>");
 
+      System.out.println("<<run: #02>>");
       clazz = loader.loadClass("TestInvokeDynamic");
       method = clazz.getMethod("callInvokeDynamic", new Class[]{Object.class, Object.class});
       ret = method.invoke(null, new Object[]{2, 3});
-      System.out.println(ret);
+      System.out.println("<<result: " + ret + ">>");
 
+      System.out.println("<<run: #03>>");
       clazz = loader.loadClass("TestInvokeDynamic2");
       method = clazz.getMethod("callInvokeDynamic", new Class[]{Object.class, Object.class, Object.class});
       ret = method.invoke(null, new Object[]{1, 2, 3});
-      System.out.println(ret);
+      System.out.println("<<result: " + ret + ">>");
 
+      System.out.println("<<run: #04>>");
       clazz = loader.loadClass("TestInvokeDynamic3");
       method = clazz.getMethod("callInvokeDynamic", new Class[]{Object.class, Object.class, Object.class});
       ret = method.invoke(null, new Object[]{1, 2, 3});
-      System.out.println(ret);
+      System.out.println("<<result: " + ret + ">>");
     } catch (ClassNotFoundException e) {
       e.printStackTrace();
     } catch (NoSuchMethodException e) {
@@ -46,6 +50,4 @@ public class Main {
       e.printStackTrace();
     }
   }
-
-
 }
