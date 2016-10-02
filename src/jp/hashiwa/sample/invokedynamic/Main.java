@@ -13,11 +13,28 @@ public class Main {
   public static void main(String[] args) {
     try {
       ClassLoader loader = new MyClassLoader();
-      Class clazz = loader.loadClass("TestInvokeDynamic");
-      Method method = clazz.getMethod("callInvokeDynamic", null);
-      Object ret = method.invoke(null, null);
+      Class clazz;
+      Method method;
+      Object ret;
+
+      clazz = loader.loadClass("TestInvokeDynamic");
+      method = clazz.getMethod("callInvokeDynamic", new Class[]{Object.class, Object.class});
+      ret = method.invoke(null, new Object[]{1, 2});
       System.out.println(ret);
-      ret = method.invoke(null, null);
+
+      clazz = loader.loadClass("TestInvokeDynamic");
+      method = clazz.getMethod("callInvokeDynamic", new Class[]{Object.class, Object.class});
+      ret = method.invoke(null, new Object[]{2, 3});
+      System.out.println(ret);
+
+      clazz = loader.loadClass("TestInvokeDynamic2");
+      method = clazz.getMethod("callInvokeDynamic", new Class[]{Object.class, Object.class, Object.class});
+      ret = method.invoke(null, new Object[]{1, 2, 3});
+      System.out.println(ret);
+
+      clazz = loader.loadClass("TestInvokeDynamic3");
+      method = clazz.getMethod("callInvokeDynamic", new Class[]{Object.class, Object.class, Object.class});
+      ret = method.invoke(null, new Object[]{1, 2, 3});
       System.out.println(ret);
     } catch (ClassNotFoundException e) {
       e.printStackTrace();

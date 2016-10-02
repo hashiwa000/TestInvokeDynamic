@@ -7,4 +7,7 @@ public class IntegerOps {
   public static Integer adder(Integer x, Integer y) {
     return x + y;
   }
+  public static Integer adder(Integer x, Integer y, Integer z) {
+    return x + y + z;
+  }
 }
